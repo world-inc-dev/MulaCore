@@ -1428,250 +1428,350 @@ footer small{
       Stateflix Sign Up
       <!-- Other content of your website above -->
       
+
+      
 <!-- MulaCore WhatsApp Floating Button -->
-<button class="mulacore-wa-float" onclick="openWhatsAppGate()" aria-label="WhatsApp MulaCore">
-  <svg viewBox="0 0 32 32" aria-hidden="true">
-    <path d="M16 3.2C8.93 3.2 3.2 8.93 3.2 16c0 2.26.59 4.39 1.7 6.27L3.2 28.8l6.7-1.66A12.73 12.73 0 0 0 16 28.8c7.07 0 12.8-5.73 12.8-12.8S23.07 3.2 16 3.2Zm0 23.4c-1.99 0-3.94-.53-5.65-1.54l-.4-.24-3.98.99 1.06-3.87-.26-.4A10.65 10.65 0 1 1 16 26.6Zm5.84-7.99c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.52-.16-.74.16-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.32-.16-1.34-.49-2.55-1.56-.94-.84-1.57-1.88-1.75-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.21-.32.32-.54.11-.22.05-.41-.03-.57-.08-.16-.74-1.78-1.01-2.44-.27-.65-.54-.56-.74-.57h-.63c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.71s1.17 3.14 1.33 3.36c.16.22 2.3 3.51 5.57 4.92.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.9-.78 2.17-1.53.27-.76.27-1.41.19-1.55-.08-.14-.3-.22-.62-.38Z"/>
+
+<style>
+  .mc-wa-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 62px;
+    height: 62px;
+    border: none;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999999;
+    box-shadow: 0 6px 22px rgba(0,0,0,.3);
+  }
+
+  .mc-wa-float svg {
+    width: 34px;
+    height: 34px;
+    fill: #fff;
+  }
+
+  .mc-wa-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000000;
+  }
+
+  .mc-wa-popup {
+    width: 100%;
+    max-width: 380px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    font-family: Arial, sans-serif;
+  }
+
+  .mc-wa-close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 35px;
+    height: 35px;
+    border: 0;
+    border-radius: 50%;
+    background: #eee;
+    font-size: 23px;
+    cursor: pointer;
+  }
+
+  .mc-wa-logo {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+  }
+
+  .mc-wa-logo svg {
+    width: 36px;
+    height: 36px;
+    fill: white;
+  }
+
+  .mc-wa-popup h2 {
+    text-align: center;
+    margin: 0 0 8px;
+    color: #111;
+  }
+
+  .mc-wa-popup p {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .mc-wa-number {
+    margin-top: 18px;
+    padding: 15px;
+    background: #f4f7f5;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .mc-wa-number strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: #111;
+  }
+
+  .mc-wa-save {
+    display: inline-block;
+    padding: 10px 17px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .mc-wa-check {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 18px 0;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .mc-wa-check input {
+    width: 18px;
+    height: 18px;
+    accent-color: #25D366;
+    flex-shrink: 0;
+  }
+
+  .mc-wa-continue {
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 11px;
+    background: #25D366;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .mc-wa-continue:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+  }
+
+  .mc-wa-note {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 11px;
+    color: #999;
+  }
+
+  @media(max-width:480px) {
+    .mc-wa-float {
+      right: 15px;
+      bottom: 15px;
+      width: 58px;
+      height: 58px;
+    }
+  }
+</style>
+
+
+<!-- FLOATING BUTTON -->
+
+<button
+  type="button"
+  class="mc-wa-float"
+  id="mcWhatsAppButton"
+  aria-label="Contact MulaCore on WhatsApp"
+>
+  <svg viewBox="0 0 32 32">
+    <path d="M19.11 17.39c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.56-1.47-1.82-.15-.27-.02-.41.11-.54.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.67 1.12 2.85c.14.18 1.93 2.95 4.68 4.13.65.28 1.16.45 1.71.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+    <path d="M16.01 3C8.83 3 3 8.83 3 16.01c0 2.29.6 4.45 1.65 6.33L3 29l6.84-1.79A12.95 12.95 0 0 0 16.01 29C23.17 29 29 23.17 29 16.01 29 8.83 23.17 3 16.01 3zm0 23.8c-2.03 0-4.02-.55-5.76-1.59l-.41-.24-4.06 1.06 1.09-3.95-.27-.41a10.77 10.77 0 1 1 9.41 5.13z"/>
   </svg>
 </button>
 
-<style>
-.mulacore-wa-float {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 62px;
-  height: 62px;
-  border: none;
-  border-radius: 50%;
-  background: #25D366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 9999;
-  box-shadow: 0 6px 20px rgba(0,0,0,.25);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
 
-.mulacore-wa-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 9px 26px rgba(0,0,0,.32);
-}
+<!-- POPUP -->
 
-.mulacore-wa-float:active {
-  transform: scale(.94);
-}
+<div class="mc-wa-overlay" id="mcWhatsAppOverlay">
 
-.mulacore-wa-float svg {
-  width: 35px;
-  height: 35px;
-  fill: white;
-}
+  <div class="mc-wa-popup">
 
-@media (max-width: 600px) {
-  .mulacore-wa-float {
-    right: 16px;
-    bottom: 16px;
-    width: 58px;
-    height: 58px;
-  }
+    <button
+      type="button"
+      class="mc-wa-close"
+      id="mcWhatsAppClose"
+    >
+      ×
+    </button>
 
-  .mulacore-wa-float svg {
-    width: 33px;
-    height: 33px;
-  }
-}
-</style>
-
-<!-- Save Contact / WhatsApp Popup -->
-<div id="whatsappGate" class="wa-overlay">
-  <div class="wa-box">
-    <button class="wa-close" onclick="closeWhatsAppGate()">×</button>
-
-    <div class="wa-big-icon">
+    <div class="mc-wa-logo">
       <svg viewBox="0 0 32 32">
-        <path d="M16 3.2C8.93 3.2 3.2 8.93 3.2 16c0 2.26.59 4.39 1.7 6.27L3.2 28.8l6.7-1.66A12.73 12.73 0 0 0 16 28.8c7.07 0 12.8-5.73 12.8-12.8S23.07 3.2 16 3.2Zm0 23.4c-1.99 0-3.94-.53-5.65-1.54l-.4-.24-3.98.99 1.06-3.87-.26-.4A10.65 10.65 0 1 1 16 26.6Zm5.84-7.99c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.52-.16-.74.16-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.32-.16-1.34-.49-2.55-1.56-.94-.84-1.57-1.88-1.75-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.21-.32.32-.54.11-.22.05-.41-.03-.57-.08-.16-.74-1.78-1.01-2.44-.27-.65-.54-.56-.74-.57h-.63c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.71s1.17 3.14 1.33 3.36c.16.22 2.3 3.51 5.57 4.92.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.9-.78 2.17-1.53.27-.76.27-1.41.19-1.55-.08-.14-.3-.22-.62-.38Z"/>
+        <path d="M19.11 17.39c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.56-1.47-1.82-.15-.27-.02-.41.11-.54.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.67 1.12 2.85c.14.18 1.93 2.95 4.68 4.13.65.28 1.16.45 1.55.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+        <path d="M16.01 3C8.83 3 3 8.83 3 16.01c0 2.29.6 4.45 1.65 6.33L3 29l6.84-1.79A12.95 12.95 0 0 0 16.01 29C23.17 29 29 23.17 29 16.01 29 8.83 23.17 3 16.01 3zm0 23.8c-2.03 0-4.02-.55-5.76-1.59l-.41-.24-4.06 1.06 1.09-3.95-.27-.41a10.77 10.77 0 1 1 9.41 5.13z"/>
       </svg>
     </div>
 
-    <h2>Save our WhatsApp</h2>
+    <h2>Chat with MulaCore</h2>
 
     <p>
-      Please save our WhatsApp number before starting a conversation.
+      Save our WhatsApp number first, then continue to WhatsApp.
     </p>
 
-    <div class="wa-number">
-      +256 776 782 876
+    <div class="mc-wa-number">
+
+      <strong>+256 776 782 876</strong>
+
+      <a
+        class="mc-wa-save"
+        href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:MulaCore%20Support%0ATEL;TYPE=CELL:+256776782876%0AEND:VCARD"
+        download="MulaCore-Support.vcf"
+      >
+        Save Contact
+      </a>
+
     </div>
 
-    <a
-      class="save-contact-btn"
-      href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AMulaCore%20WhatsApp%0ATEL%3BTYPE%3DCELL%3A%2B256776782876%0AEND%3AVCARD"
-      download="MulaCore-WhatsApp.vcf"
-    >
-      📱 Save Contact
-    </a>
+    <label class="mc-wa-check">
 
-    <label class="saved-check">
-      <input type="checkbox" id="savedContact">
-      I have saved the number
+      <input
+        type="checkbox"
+        id="mcSavedNumber"
+      >
+
+      <span>
+        I have saved the MulaCore WhatsApp number in my contacts.
+      </span>
+
     </label>
 
     <button
-      id="continueWhatsApp"
-      class="continue-wa-btn"
-      onclick="continueToWhatsApp()"
+      type="button"
+      class="mc-wa-continue"
+      id="mcContinueWhatsApp"
       disabled
     >
       Continue to WhatsApp
     </button>
+
+    <div class="mc-wa-note">
+      MulaCore Support
+    </div>
+
   </div>
 </div>
 
-<style>
-.wa-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: rgba(0,0,0,.72);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.wa-box {
-  position: relative;
-  width: 100%;
-  max-width: 380px;
-  background: white;
-  color: #111;
-  border-radius: 22px;
-  padding: 28px 22px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 20px 60px rgba(0,0,0,.35);
-}
-
-.wa-close {
-  position: absolute;
-  right: 14px;
-  top: 8px;
-  border: none;
-  background: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: #555;
-}
-
-.wa-big-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 14px;
-  border-radius: 50%;
-  background: #25D366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.wa-big-icon svg {
-  width: 38px;
-  height: 38px;
-  fill: white;
-}
-
-.wa-box h2 {
-  margin: 5px 0 10px;
-}
-
-.wa-box p {
-  color: #666;
-  line-height: 1.5;
-}
-
-.wa-number {
-  margin: 18px 0;
-  padding: 13px;
-  border-radius: 12px;
-  background: #f1f5f3;
-  font-size: 19px;
-  font-weight: 800;
-}
-
-.save-contact-btn,
-.continue-wa-btn {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.save-contact-btn {
-  background: #111;
-  color: white;
-}
-
-.continue-wa-btn {
-  background: #25D366;
-  color: white;
-  margin-top: 12px;
-}
-
-.continue-wa-btn:disabled {
-  opacity: .45;
-  cursor: not-allowed;
-}
-
-.saved-check {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin: 17px 0;
-  font-size: 14px;
-}
-
-.saved-check input {
-  width: 18px;
-  height: 18px;
-  accent-color: #25D366;
-}
-</style>
 
 <script>
-function openWhatsAppGate() {
-  document.getElementById("whatsappGate").style.display = "flex";
-}
+(function () {
 
-function closeWhatsAppGate() {
-  document.getElementById("whatsappGate").style.display = "none";
-}
+  const button = document.getElementById("mcWhatsAppButton");
+  const overlay = document.getElementById("mcWhatsAppOverlay");
+  const closeButton = document.getElementById("mcWhatsAppClose");
+  const checkbox = document.getElementById("mcSavedNumber");
+  const continueButton = document.getElementById("mcContinueWhatsApp");
 
-document.getElementById("savedContact").addEventListener("change", function () {
-  document.getElementById("continueWhatsApp").disabled = !this.checked;
-});
+  /* IMPORTANT:
+     This button does NOT redirect to StateFlix.
+     It only opens the WhatsApp popup.
+  */
 
-function continueToWhatsApp() {
-  const phone = "256776782876";
-  const message = encodeURIComponent(
-    "Hello MulaCore, I need help with my account."
-  );
+  button.addEventListener("click", function (event) {
 
-  window.open(
-    "https://wa.me/" + phone + "?text=" + message,
-    "_blank"
-  );
-}
+    event.preventDefault();
+    event.stopPropagation();
+
+    overlay.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+  });
+
+
+  closeButton.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    closePopup();
+
+  });
+
+
+  overlay.addEventListener("click", function (event) {
+
+    if (event.target === overlay) {
+      closePopup();
+    }
+
+  });
+
+
+  checkbox.addEventListener("change", function () {
+
+    continueButton.disabled = !checkbox.checked;
+
+  });
+
+
+  continueButton.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (!checkbox.checked) {
+      return;
+    }
+
+    const phone = "256776782876";
+
+    const message = encodeURIComponent(
+      "Hello MulaCore, I need help with my account."
+    );
+
+    /*
+      WhatsApp opens ONLY after the user
+      clicks Continue to WhatsApp.
+    */
+
+    window.location.href =
+      "https://wa.me/" + phone + "?text=" + message;
+
+  });
+
+
+  function closePopup() {
+
+    overlay.style.display = "none";
+    document.body.style.overflow = "";
+
+  }
+
+})();
 </script>
-  
   </a>
 
 </body>
