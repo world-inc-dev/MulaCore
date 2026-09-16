@@ -1430,7 +1430,7 @@ footer small{
       
 
       
-<!-- MulaCore WhatsApp Floating Button -->
+ <!-- MULACORE WHATSAPP NUMBER POPUP -->
 
 <style>
   .mc-wa-float {
@@ -1459,7 +1459,7 @@ footer small{
   .mc-wa-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.65);
+    background: rgba(0,0,0,.70);
     display: none;
     align-items: center;
     justify-content: center;
@@ -1467,15 +1467,33 @@ footer small{
     z-index: 1000000;
   }
 
+  .mc-wa-overlay.active {
+    display: flex;
+  }
+
   .mc-wa-popup {
     width: 100%;
-    max-width: 380px;
+    max-width: 350px;
     background: #fff;
-    border-radius: 20px;
-    padding: 25px;
+    color: #111;
+    border-radius: 22px;
+    padding: 30px 22px;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0,0,0,.4);
-    font-family: Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    animation: mcWaPop .2s ease;
+  }
+
+  @keyframes mcWaPop {
+    from {
+      opacity: 0;
+      transform: scale(.9);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .mc-wa-close {
@@ -1487,6 +1505,7 @@ footer small{
     border: 0;
     border-radius: 50%;
     background: #eee;
+    color: #333;
     font-size: 23px;
     cursor: pointer;
   }
@@ -1499,7 +1518,7 @@ footer small{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 15px;
+    margin: 0 auto 16px;
   }
 
   .mc-wa-logo svg {
@@ -1509,115 +1528,78 @@ footer small{
   }
 
   .mc-wa-popup h2 {
-    text-align: center;
     margin: 0 0 8px;
-    color: #111;
+    font-size: 23px;
   }
 
   .mc-wa-popup p {
-    text-align: center;
+    margin: 0 0 20px;
     color: #666;
     font-size: 14px;
-    line-height: 1.5;
   }
 
   .mc-wa-number {
-    margin-top: 18px;
-    padding: 15px;
-    background: #f4f7f5;
-    border-radius: 12px;
-    text-align: center;
+    padding: 18px 12px;
+    border-radius: 14px;
+    background: #f2f7f4;
   }
 
   .mc-wa-number strong {
     display: block;
-    margin-bottom: 10px;
-    font-size: 17px;
     color: #111;
-  }
-
-  .mc-wa-save {
-    display: inline-block;
-    padding: 10px 17px;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 14px;
-  }
-
-  .mc-wa-check {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    margin: 18px 0;
-    font-size: 14px;
-    color: #444;
-    line-height: 1.4;
-    cursor: pointer;
-  }
-
-  .mc-wa-check input {
-    width: 18px;
-    height: 18px;
-    accent-color: #25D366;
-    flex-shrink: 0;
-  }
-
-  .mc-wa-continue {
-    width: 100%;
-    padding: 14px;
-    border: 0;
-    border-radius: 11px;
-    background: #25D366;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .mc-wa-continue:disabled {
-    background: #aaa;
-    cursor: not-allowed;
+    font-size: 25px;
+    letter-spacing: .5px;
   }
 
   .mc-wa-note {
-    text-align: center;
-    margin-top: 12px;
-    font-size: 11px;
+    margin-top: 15px;
     color: #999;
+    font-size: 11px;
   }
 
   @media(max-width:480px) {
+
     .mc-wa-float {
       right: 15px;
       bottom: 15px;
       width: 58px;
       height: 58px;
     }
+
+    .mc-wa-popup {
+      max-width: 330px;
+    }
+
+    .mc-wa-number strong {
+      font-size: 23px;
+    }
   }
 </style>
 
 
-<!-- FLOATING BUTTON -->
+<!-- FLOATING WHATSAPP BUTTON -->
 
 <button
   type="button"
   class="mc-wa-float"
   id="mcWhatsAppButton"
-  aria-label="Contact MulaCore on WhatsApp"
+  aria-label="Show MulaCore WhatsApp number"
 >
+
   <svg viewBox="0 0 32 32">
-    <path d="M19.11 17.39c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.56-1.47-1.82-.15-.27-.02-.41.11-.54.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.67 1.12 2.85c.14.18 1.93 2.95 4.68 4.13.65.28 1.16.45 1.71.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+    <path d="M19.11 17.39c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.56-1.47-1.82-.15-.27-.02-.41.11-.54.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.67 1.12 2.85c.14.18 1.93 2.95 4.68 4.13.65.28 1.16.45 1.55.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
     <path d="M16.01 3C8.83 3 3 8.83 3 16.01c0 2.29.6 4.45 1.65 6.33L3 29l6.84-1.79A12.95 12.95 0 0 0 16.01 29C23.17 29 29 23.17 29 16.01 29 8.83 23.17 3 16.01 3zm0 23.8c-2.03 0-4.02-.55-5.76-1.59l-.41-.24-4.06 1.06 1.09-3.95-.27-.41a10.77 10.77 0 1 1 9.41 5.13z"/>
   </svg>
+
 </button>
 
 
-<!-- POPUP -->
+<!-- WHATSAPP NUMBER POPUP -->
 
-<div class="mc-wa-overlay" id="mcWhatsAppOverlay">
+<div
+  class="mc-wa-overlay"
+  id="mcWhatsAppOverlay"
+>
 
   <div class="mc-wa-popup">
 
@@ -1625,150 +1607,106 @@ footer small{
       type="button"
       class="mc-wa-close"
       id="mcWhatsAppClose"
+      aria-label="Close"
     >
       ×
     </button>
 
     <div class="mc-wa-logo">
+
       <svg viewBox="0 0 32 32">
         <path d="M19.11 17.39c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.56-1.47-1.82-.15-.27-.02-.41.11-.54.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.67 1.12 2.85c.14.18 1.93 2.95 4.68 4.13.65.28 1.16.45 1.55.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
         <path d="M16.01 3C8.83 3 3 8.83 3 16.01c0 2.29.6 4.45 1.65 6.33L3 29l6.84-1.79A12.95 12.95 0 0 0 16.01 29C23.17 29 29 23.17 29 16.01 29 8.83 23.17 3 16.01 3zm0 23.8c-2.03 0-4.02-.55-5.76-1.59l-.41-.24-4.06 1.06 1.09-3.95-.27-.41a10.77 10.77 0 1 1 9.41 5.13z"/>
       </svg>
+
     </div>
 
-    <h2>Chat with MulaCore</h2>
+    <h2>Contact MulaCore</h2>
 
     <p>
-      Save our WhatsApp number first, then continue to WhatsApp.
+      Our WhatsApp number is:
     </p>
 
     <div class="mc-wa-number">
-
-      <strong>+256 776 782 876</strong>
-
-      <a
-        class="mc-wa-save"
-        href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:MulaCore%20Support%0ATEL;TYPE=CELL:+256776782876%0AEND:VCARD"
-        download="MulaCore-Support.vcf"
-      >
-        Save Contact
-      </a>
-
+      <strong>0776782876</strong>
     </div>
 
-    <label class="mc-wa-check">
-
-      <input
-        type="checkbox"
-        id="mcSavedNumber"
-      >
-
-      <span>
-        I have saved the MulaCore WhatsApp number in my contacts.
-      </span>
-
-    </label>
-
-    <button
-      type="button"
-      class="mc-wa-continue"
-      id="mcContinueWhatsApp"
-      disabled
-    >
-      Continue to WhatsApp
-    </button>
-
     <div class="mc-wa-note">
-      MulaCore Support
+      Save the number and contact MulaCore whenever you're ready.
     </div>
 
   </div>
+
 </div>
 
 
 <script>
-(function () {
 
-  const button = document.getElementById("mcWhatsAppButton");
-  const overlay = document.getElementById("mcWhatsAppOverlay");
-  const closeButton = document.getElementById("mcWhatsAppClose");
-  const checkbox = document.getElementById("mcSavedNumber");
-  const continueButton = document.getElementById("mcContinueWhatsApp");
+(function(){
 
-  /* IMPORTANT:
-     This button does NOT redirect to StateFlix.
-     It only opens the WhatsApp popup.
-  */
+  const button =
+    document.getElementById("mcWhatsAppButton");
 
-  button.addEventListener("click", function (event) {
+  const overlay =
+    document.getElementById("mcWhatsAppOverlay");
+
+  const closeButton =
+    document.getElementById("mcWhatsAppClose");
+
+
+  /* OPEN POPUP ONLY */
+
+  button.addEventListener("click", function(event){
 
     event.preventDefault();
     event.stopPropagation();
 
-    overlay.style.display = "flex";
+    overlay.classList.add("active");
+
     document.body.style.overflow = "hidden";
 
   });
 
 
-  closeButton.addEventListener("click", function (event) {
+  /* CLOSE BUTTON */
 
-    event.preventDefault();
-    event.stopPropagation();
+  closeButton.addEventListener("click", function(){
 
-    closePopup();
+    overlay.classList.remove("active");
 
-  });
-
-
-  overlay.addEventListener("click", function (event) {
-
-    if (event.target === overlay) {
-      closePopup();
-    }
-
-  });
-
-
-  checkbox.addEventListener("change", function () {
-
-    continueButton.disabled = !checkbox.checked;
-
-  });
-
-
-  continueButton.addEventListener("click", function (event) {
-
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (!checkbox.checked) {
-      return;
-    }
-
-    const phone = "256776782876";
-
-    const message = encodeURIComponent(
-      "Hello MulaCore, I need help with my account."
-    );
-
-    /*
-      WhatsApp opens ONLY after the user
-      clicks Continue to WhatsApp.
-    */
-
-    window.location.href =
-      "https://wa.me/" + phone + "?text=" + message;
-
-  });
-
-
-  function closePopup() {
-
-    overlay.style.display = "none";
     document.body.style.overflow = "";
 
-  }
+  });
+
+
+  /* CLOSE WHEN CLICKING OUTSIDE POPUP */
+
+  overlay.addEventListener("click", function(event){
+
+    if(event.target === overlay){
+
+      overlay.classList.remove("active");
+
+      document.body.style.overflow = "";
+
+    }
+
+  });
+
+
+  /* CLOSE WITH ESCAPE */
+
+  document.addEventListener("keydown", function(event){
+
+    if(event.key === "Escape"){
+
+      overlay.classList.remove("active");
+
+      document.body.style.overflow = "";
+
+    }
+
+  });
 
 })();
 </script>
